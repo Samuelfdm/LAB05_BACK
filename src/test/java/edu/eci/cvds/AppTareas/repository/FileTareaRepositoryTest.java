@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.IOException; // Asegúrate de importar IOException
+import java.io.IOException; 
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -21,12 +21,12 @@ public class FileTareaRepositoryTest {
 
     @BeforeEach
     public void setUp() {
-        // Inicializar el archivo de prueba
+        
         File archivo = new File(testFilePath);
         if (archivo.exists()) {
             archivo.delete();
         }
-        // Crear instancia del repositorio sin argumentos
+        
         repository = new FileTareaRepository(); 
     }
 
