@@ -33,4 +33,6 @@ public class Tarea {
     public boolean getEstado() {
         return estado;
     }
+
+    public void prueba(){}
 }
