@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.UUID;
 
 @Service
 public class TareaService {
 
     private final TareaPersistence tareaPersistence;
+    private final Random random = new Random();
 
     @Autowired
     public TareaService(TareaPersistence tareaPersistence) {
@@ -63,5 +65,25 @@ public class TareaService {
         tarea.setEstado(!tarea.getEstado());
         tareaPersistence.save(tarea);
         return true;
+    }
+
+    public void generarTareasAleatorias() {
+        int numTareas = random.nextInt(901) + 100;
+        for (int i = 0; i < numTareas; i++) {
+            Tarea tarea = new Tarea();
+            tarea.setId(UUID.randomUUID().toString());
+            tarea.setNombre("Tarea " + (i + 1));
+            tarea.setDescripcion("Descripción de la tarea " + (i + 1));
+            tarea.setEstado(random.nextBoolean());
+            tarea.setDificultad(obtenerNivelDificultadAleatorio());
+            tarea.setPrioridad(random.nextInt(5) + 1);
+            tarea.setTiempoPromedio(1 + (20 - 1) * random.nextDouble());
+            tareaPersistence.save(tarea);
+        }
+    }
+
+    public String obtenerNivelDificultadAleatorio() {
+        String[] niveles = {"Alto", "Medio", "Bajo"};
+        return niveles[random.nextInt(niveles.length)];
     }
 }

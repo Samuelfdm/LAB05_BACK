@@ -22,12 +22,19 @@ public class Tarea {
     private String nombre;
     private String descripcion;
     private boolean estado;
+    private int prioridad;
+    private String dificultad;
+    private double tiempoPromedio;
 
-    public Tarea(String id, String nombre, String descripcion, boolean estado) {
+
+    public Tarea(String id, String nombre, String descripcion, boolean estado, int prioridad, String dificultad, double tiempoPromedio) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
+        this.prioridad = prioridad;
+        this.dificultad = dificultad;
+        this.tiempoPromedio = tiempoPromedio;
     }
 
     public boolean getEstado() {
